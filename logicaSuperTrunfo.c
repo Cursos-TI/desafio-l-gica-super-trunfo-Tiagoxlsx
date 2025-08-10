@@ -2,105 +2,107 @@
 #include <string.h>
 
 int main() {
-    // --- Card 1 (Country A) ---
-    char countryA_name[50];
-    long long countryA_population;
-    double countryA_area;
-    double countryA_gdp;
+    // --- Carta 1: Brasil ---
+    char paisA_nome[50];
+    long long paisA_populacao;
+    double paisA_area;
+    double paisA_pib;
     
-    // --- Card 2 (Country B) ---
-    char countryB_name[50];
-    long long countryB_population;
-    double countryB_area;
-    double countryB_gdp;
+    // --- Carta 2: México ---
+    char paisB_nome[50];
+    long long paisB_populacao;
+    double paisB_area;
+    double paisB_pib;
 
-    // --- User's Choice ---
-    int comparison_attribute;
+    // --- Escolha do Usuário ---
+    int atributo_comparacao;
 
-    // --- Input for Card 1 (Country A) ---
-    printf("--- Card 1: Country A ---\n");
-    printf("Enter country name: ");
-    scanf("%s", countryA_name);
-    printf("Enter population (in millions): ");
-    scanf("%lld", &countryA_population);
-    printf("Enter area (in km^2): ");
-    scanf("%lf", &countryA_area);
-    printf("Enter GDP (in billions USD): ");
-    scanf("%lf", &countryA_gdp);
-
-    printf("\n");
-
-    // --- Input for Card 2 (Country B) ---
-    printf("--- Card 2: Country B ---\n");
-    printf("Enter country name: ");
-    scanf("%s", countryB_name);
-    printf("Enter population (in millions): ");
-    scanf("%lld", &countryB_population);
-    printf("Enter area (in km^2): ");
-    scanf("%lf", &countryB_area);
-    printf("Enter GDP (in billions USD): ");
-    scanf("%lf", &countryB_gdp);
-
-    printf("\n");
+    // --- Dados pré-definidos para o Brasil ---
+    strcpy(paisA_nome, "Brasil");
+    paisA_populacao = 217; // Aproximadamente 217 milhões
+    paisA_area = 8515767.0; // Em km^2
+    paisA_pib = 2.0; // Aproximadamente 2.0 trilhões USD
     
-    // --- Choose an attribute to compare ---
-    printf("Choose an attribute to compare:\n");
-    printf("1. Population\n");
+    // --- Dados pré-definidos para o México ---
+    strcpy(paisB_nome, "Mexico");
+    paisB_populacao = 129; // Aproximadamente 129 milhões
+    paisB_area = 1964375.0; // Em km^2
+    paisB_pib = 1.66; // Aproximadamente 1.66 trilhões USD
+
+    // --- Exibição das Cartas ---
+    printf("--- Super Trunfo: Brasil vs. Mexico ---\n\n");
+    
+    printf("Carta 1:\n");
+    printf("Nome: %s\n", paisA_nome);
+    printf("Populacao: %lld milhoes\n", paisA_populacao);
+    printf("Area: %.0f km^2\n", paisA_area);
+    printf("PIB: %.2f trilhoes USD\n\n", paisA_pib);
+
+    printf("Carta 2:\n");
+    printf("Nome: %s\n", paisB_nome);
+    printf("Populacao: %lld milhoes\n", paisB_populacao);
+    printf("Area: %.0f km^2\n", paisB_area);
+    printf("PIB: %.2f trilhoes USD\n\n", paisB_pib);
+    
+    // --- Escolha do atributo para comparar ---
+    printf("Escolha um atributo para comparar:\n");
+    printf("1. Populacao\n");
     printf("2. Area\n");
-    printf("3. GDP\n");
-    printf("Enter your choice (1, 2, or 3): ");
-    scanf("%d", &comparison_attribute);
+    printf("3. PIB\n");
+    printf("Digite sua escolha (1, 2 ou 3): ");
+    scanf("%d", &atributo_comparacao);
     
-    // --- Comparison Logic ---
-    char winner_name[50];
+    // --- Lógica de Comparação ---
+    char nome_vencedor[50];
 
-    switch (comparison_attribute) {
+    switch (atributo_comparacao) {
         case 1:
-            // Compare Population
-            printf("\n--- Comparing Population ---\n");
-            if (countryA_population > countryB_population) {
-                strcpy(winner_name, countryA_name);
-                printf("%s wins with a population of %lld million!\n", winner_name, countryA_population);
-            } else if (countryB_population > countryA_population) {
-                strcpy(winner_name, countryB_name);
-                printf("%s wins with a population of %lld million!\n", winner_name, countryB_population);
+            // Compara a População
+            printf("\n--- Comparando Populacao ---\n");
+            if (paisA_populacao > paisB_populacao) {
+                strcpy(nome_vencedor, paisA_nome);
+                printf("%s vence com uma populacao de %lld milhoes!\n", nome_vencedor, paisA_populacao);
+            } else if (paisB_populacao > paisA_populacao) {
+                strcpy(nome_vencedor, paisB_nome);
+                printf("%s vence com uma populacao de %lld milhoes!\n", nome_vencedor, paisB_populacao);
             } else {
-                printf("It's a draw! Both countries have the same population.\n");
+                printf("Empate! Ambos os paises tem a mesma populacao.\n");
             }
             break;
         
         case 2:
-            // Compare Area
-            printf("\n--- Comparing Area ---\n");
-            if (countryA_area > countryB_area) {
-                strcpy(winner_name, countryA_name);
-                printf("%s wins with an area of %.2f km^2!\n", winner_name, countryA_area);
-            } else if (countryB_area > countryA_area) {
-                strcpy(winner_name, countryB_name);
-                printf("%s wins with an area of %.2f km^2!\n", winner_name, countryB_area);
+            // Compara a Área
+            printf("\n--- Comparando Area ---\n");
+            if (paisA_area > paisB_area) {
+                strcpy(nome_vencedor, paisA_nome);
+                printf("%s vence com uma area de %.0f km^2!\n", nome_vencedor, paisA_area);
+            } else if (paisB_area > paisA_area) {
+                strcpy(nome_vencedor, paisB_nome);
+                printf("%s vence com uma area de %.0f km^2!\n", nome_vencedor, paisB_area);
             } else {
-                printf("It's a draw! Both countries have the same area.\n");
+                printf("Empate! Ambos os paises tem a mesma area.\n");
             }
             break;
 
         case 3:
-            // Compare GDP
-            printf("\n--- Comparing GDP ---\n");
-            if (countryA_gdp > countryB_gdp) {
-                strcpy(winner_name, countryA_name);
-                printf("%s wins with a GDP of %.2f billion USD!\n", winner_name, countryA_gdp);
-            } else if (countryB_gdp > countryA_gdp) {
-                strcpy(winner_name, countryB_name);
-                printf("%s wins with a GDP of %.2f billion USD!\n", winner_name, countryB_gdp);
+            // Compara o PIB
+            printf("\n--- Comparando PIB ---\n");
+            if (paisA_pib > paisB_pib) {
+                strcpy(nome_vencedor, paisA_nome);
+                printf("%s vence com um PIB de %.2f trilhoes USD!\n", nome_vencedor, paisA_pib);
+            } else if (paisB_pib > paisA_pib) {
+                strcpy(nome_vencedor, paisB_nome);
+                printf("%s vence com um PIB de %.2f trilhoes USD!\n", nome_vencedor, paisB_pib);
             } else {
-                printf("It's a draw! Both countries have the same GDP.\n");
+                printf("Empate! Ambos os paises tem o mesmo PIB.\n");
             }
             break;
         
         default:
-            printf("\nInvalid choice. Please choose 1, 2, or 3.\n");
+            printf("\nEscolha invalida. Por favor, digite 1, 2 ou 3.\n");
             break;
     }
 
     return 0;
 }
+
